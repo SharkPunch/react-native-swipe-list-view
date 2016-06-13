@@ -67,6 +67,11 @@ class SwipeListView extends Component {
 				{...this.props}
 				ref={ c => this._listView = c}
 				onScroll={ e => this.onScroll(e) }
+				initialListSize= {this.props.initialListSize}
+				pageSize= {this.props.pageSize}
+				scrollAheadRenderDistance= {this.props.scrollAheadRenderDistance}
+				removeClippedSubViews={this.props.removeClippedSubViews}
+
 				renderRow={(rowData, secId, rowId) => (
 					<SwipeRow
 						ref={row => this._rows[`${secId}${rowId}`] = row}
@@ -141,7 +146,11 @@ SwipeListView.propTypes = {
 	/**
 	 * Called when a swipe row is animating closed
 	 */
-	onRowClose: PropTypes.func
+	onRowClose: PropTypes.func,
+	initialListSize: PropTypes.number,
+	pageSize: PropTypes.number,
+	scrollAheadRenderDistance: PropTypes.number,
+	removeClippedSubViews: PropTypes.bool
 }
 
 SwipeListView.defaultProps = {
@@ -151,7 +160,11 @@ SwipeListView.defaultProps = {
 	closeOnRowPress: true,
 	disableLeftSwipe: false,
 	disableRightSwipe: false,
-	recalculateHiddenLayout: false
+	recalculateHiddenLayout: false,
+	initialListSize: 1,
+	pageSize: 1,
+	scrollAheadRenderDistance: 0,
+	removeClippedSubViews: true
 }
 
 export default SwipeListView;
