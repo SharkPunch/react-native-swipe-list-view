@@ -247,7 +247,8 @@ class SwipeRow extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1
+    // Causes all the rows in a list to try to equalize their height
+		//flex: 1
 	},
 	hidden: {
 		bottom: 0,
